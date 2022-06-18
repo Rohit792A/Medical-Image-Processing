@@ -1,4 +1,4 @@
-from google.colab.patches import cv2_imshow
+from google.colab.patches import cv2_imshow              //file can be run on Colab
 from skimage.filters import median
 
 img_gaussian_noise = cv2.imread("/content/Figure 2_HC.png", 0)
