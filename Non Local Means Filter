@@ -1,0 +1,19 @@
+import numpy as np
+from matplotlib import pyplot as plt
+from skimage import img_as_ubyte, img_as_float
+from matplotlib import pyplot as plt
+from skimage import io
+import cv2
+import numpy as np
+
+
+noisy_img = io.imread("/content/Figure 2_HC.png", as_gray=True)  #Only 8 bit supported for CV2 NLM
+
+# fastNlMeansDenoising(InputArray src, OutputArray dst, float h=3, int templateWindowSize=7, int searchWindowSize=21 )
+
+NLM_CV2_denoise_img = cv2.fastNlMeansDenoising(noisy_img, None, 3, 7, 21)
+
+
+plt.imsave("Figure_3_nlm.png", NLM_CV2_denoise_img, cmap='gray')
+
+plt.imshow(NLM_CV2_denoise_img, cmap='gray')
