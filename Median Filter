@@ -1,0 +1,24 @@
+from google.colab.patches import cv2_imshow
+from skimage.filters import median
+
+img_gaussian_noise = cv2.imread("/content/Figure 2_HC.png", 0)
+img_salt_pepper_noise = cv2.imread("/content/Figure 2_HC.png", 0)
+
+img = img_salt_pepper_noise
+
+
+median_using_cv2 = cv2.medianBlur(img, 3)
+
+from skimage.morphology import disk  
+median_using_skimage = median(img, disk(3), mode='constant', cval=0.0)
+
+
+cv2_imshow(img)
+print("Original Image \n")
+cv2_imshow( median_using_cv2)
+print("cv2 median\n")
+cv2_imshow(median_using_skimage)
+print("Using skimage Median" )
+
+cv2.waitKey(0)          
+cv2.destroyAllWindows() 
